@@ -13,7 +13,7 @@ def transpose(string)
       end
       s_arr.delete_at(0)
     else
-      output += s_arr[0]
+      output += s_arr[0]:nigeria:
       s_arr.delete_at(0)
     end
   end
@@ -28,3 +28,13 @@ p transpose('he was searchign on Bign for signign kigns')
 
 puts transpose('gngngnnggnngggnnn') #ggn
 # => nnnnnnnnngggggggg
+
+# Model solution
+# def transpose(string)
+#   # your code here
+#   while string.include?('gn')
+# 		string.gsub!('gn', 'ng')
+# 	end
+	
+# 	string
+# end
