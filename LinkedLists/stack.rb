@@ -17,7 +17,7 @@ class Stack
       @top = new_node
     end
   end
-  
+
   def pop
     return nil if @top.nil?
     temp = @top.value

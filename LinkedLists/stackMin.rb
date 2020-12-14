@@ -23,7 +23,7 @@ class Stack
       @top = new_node
     end
   end
-  
+
   def pop
     return nil if @top.nil?
     top_val = @top.value
@@ -46,14 +46,14 @@ end
 # Stack doesn’t hold actual value of an element if it is minimum so far.
 # Actual minimum element is always stored in min
 
-stack = Stack.new
-stack.push(5)
+# stack = Stack.new
+# stack.push(5)
 # puts stack.min
-stack.push(3)
+# stack.push(3)
 # puts stack.min
 # => 3
 
-stack.pop
+# stack.pop
 # stack.push(7)
 # puts stack.min
 # => 3

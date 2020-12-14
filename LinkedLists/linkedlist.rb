@@ -21,7 +21,7 @@ class LinkedList
 
   def add_at(index, item)
     current_node = get_node(index)
-    
+
     new_node = Node.new(item)
     if @head.nil?
       @head = new_node
@@ -52,7 +52,7 @@ class LinkedList
   def remove(index)
     current_node = get_node(index)
     return nil unless current_node
-    
+
     if index.zero?
       @head = current_node.next_node
       current_node = nil
@@ -78,7 +78,7 @@ list = LinkedList.new
 list.add(10)
 list.add(200)
 
-p list
+# p list
 # llist.add(5)
 # llist.add_at(1, 15)
 

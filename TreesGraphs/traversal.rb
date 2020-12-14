@@ -40,3 +40,15 @@ end
 tree = array_to_tree([10, 1, 2, 3, 4, 5, 6], 0)
 puts post_order(tree)
 #=> 3 4 1 5 6 2 10
+
+def binary_tree_height(array, i = 0)
+  # write your code here
+  return 0 if array[i] == nil || array.length <= i
+
+  left_h = binary_tree_height(array, 2*i+1)
+  right_h = binary_tree_height(array, 2*i+2)
+  1 + [left_h, right_h].max
+end
+
+puts binary_tree_height([2, 7, 5, 2, 6, 0, 9])
+# => 3
