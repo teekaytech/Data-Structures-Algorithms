@@ -1,4 +1,5 @@
-def depth_first_search(graph)
+def connected_graph?(graph)
+  all_nodes = graph.keys
   current_node = graph.keys[0]
   nodes_visited = [current_node]
   stack = []
@@ -13,15 +14,26 @@ def depth_first_search(graph)
 
     nodes_visited.push(current_node) if !nodes_visited.include?(current_node)
   end
-  nodes_visited
+
+  all_nodes.sort === nodes_visited.sort ? true : false
 end
 
-p depth_first_search({
+puts connected_graph?({
   0 => [2],
   1 => [4],
-  2 => [5, 0, 3],
-  3 => [2],
-  4 => [1, 5],
-  5 => [4, 2]
+  2 => [0, 5, 3],
+  3 => [5, 2],
+  4 => [5, 1],
+  5 => [4, 2, 3]
 })
-# => [0, 2, 5, 4, 1, 3]
+# => true
+
+puts connected_graph?({
+  0 => [1, 2],
+  1 => [0, 2],
+  2 => [0, 1, 3, 4, 5],
+  3 => [2, 4],
+  4 => [3, 2],
+  5 => [2]
+})
+# => true

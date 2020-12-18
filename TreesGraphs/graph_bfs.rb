@@ -1,16 +1,27 @@
 def bfs(graph)
-  next_node = graph.keys[0]
-  nodes_visited = [next_node]
-  queue = [next_node]
+  current_node = graph.keys[0]
+  nodes_visited = [current_node]
+  queue = []
+  graph[current_node].map { |cn| queue.push(cn) }
 
-  while nodes_visited.length < graph.length
-    neighbor = graph.select { |node, values| node.equal?(next_node)}
-    next_node = graph[queue.shift][0]
-    queue.push(next_node)
-    neighbor.values.first.map { |nd| nodes_visited.push(nd) if !nodes_visited.include?(nd) }
+  until queue.empty?
+    node_to_visit = queue.shift
+    nodes_visited.push(node_to_visit)
+    graph[node_to_visit].each do |n|
+      queue.push(n) if !nodes_visited.include?(n) && !queue.include?(n)
+    end
   end
   nodes_visited
 end
+
+p bfs({
+  0=>[1, 2],
+  1=>[0, 2],
+  2=>[0, 1, 3, 4, 5],
+  3=>[2, 4],
+  4=>[3, 2],
+  5=>[2]}
+)
 
 p bfs({
   0 => [2],
