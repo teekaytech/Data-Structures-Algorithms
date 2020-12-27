@@ -5,8 +5,7 @@ def running_time(array)
       until index.zero?
         if array[index] < array[index-1]
           current = array[index]
-          array[index] = array[index-1]
-          array[index-1] = current
+          array[index], array[index-1] = array[index-1], current
           times += 1
         end
         index -= 1
