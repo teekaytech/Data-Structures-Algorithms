@@ -20,8 +20,6 @@ class LinkedList
   end
 
   def add_at(index, item)
-    current_node = get_node(index)
-
     new_node = Node.new(item)
     if @head.nil?
       @head = new_node
@@ -29,6 +27,7 @@ class LinkedList
       new_node.next_node = @head
       @head = new_node
     else
+      current_node = get_node(index)
       prev_node = get_node(index-1)
       prev_node.next_node = new_node
       new_node.next_node = current_node
@@ -72,11 +71,27 @@ class LinkedList
     end
     counts
   end
+
+  def list_array
+    arr = []
+    return arr if @head.nil?
+
+    current_node = @head
+    arr << current_node.value
+    while current_node.next_node != nil
+      current_node = current_node.next_node
+      arr << current_node.value
+    end
+    arr
+  end
 end
 
 list = LinkedList.new
 list.add(10)
-list.add(200)
+list.add(30)
+list.add_at(1, 24)
+p list
+p list.list_array
 
 # p list
 # llist.add(5)
